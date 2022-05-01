@@ -5,12 +5,11 @@ def can_go_to_city(city_weights, city, amount):
     return (amount + city_weights[city] > 0) and (amount + city_weights[city] < 30)
 
 
-def solve(matrix, city_weights):
-    INITIAL_CITY = 61  # es otra que empieza con 10 de carga
-    solution = [INITIAL_CITY]
-    city = INITIAL_CITY
+def solve(matrix, city_weights, initial_city):
+    solution = [initial_city]
+    city = initial_city
     min_city = 0
-    current_amount = city_weights[INITIAL_CITY]
+    current_amount = city_weights[initial_city]
     total_distance = 0
     while len(solution) < len(matrix):
         min_distance = float("inf")
@@ -24,5 +23,4 @@ def solve(matrix, city_weights):
         current_amount += city_weights[min_city]
         total_distance += min_distance
     # Primer item es 0 y deberia ser 1, ultimo item es 149 y deberia ser 150.
-    print("total_distance:", total_distance)
-    return [str(x + 1) for x in solution]
+    return (total_distance, [str(x + 1) for x in solution])
