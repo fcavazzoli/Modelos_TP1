@@ -6,7 +6,7 @@ class Model:
     capacity = 0
     dimension = 0
     requests = []
-    nodes = [(0, 0)]
+    nodes = []
     distance_type = ''
 
     def __init__(self):

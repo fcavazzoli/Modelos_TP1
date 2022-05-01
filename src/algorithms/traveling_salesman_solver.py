@@ -22,7 +22,6 @@ def solve(matrix, city_weights):
         solution.append(min_city)
         city = min_city
         current_amount += city_weights[min_city]
-        print("current_amount", current_amount)
         total_distance += min_distance
     # Primer item es 0 y deberia ser 1, ultimo item es 149 y deberia ser 150.
     print("total_distance:", total_distance)
