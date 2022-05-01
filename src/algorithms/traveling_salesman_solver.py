@@ -6,6 +6,7 @@ def can_go_to_city(city_weights, city, amount):
 
 
 def solve(matrix, city_weights):
+    print(city_weights)
     solution = [0]
     city = 0
     min_city = 0

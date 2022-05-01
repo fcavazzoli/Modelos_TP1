@@ -1,10 +1,11 @@
+from typing import List
 from helpers.distances import coor_to_km
 
 
 class Model:
     capacity = 0
     dimension = 0
-    requests = [0]
+    requests = []
     nodes = [(0, 0)]
     distance_type = ''
 
