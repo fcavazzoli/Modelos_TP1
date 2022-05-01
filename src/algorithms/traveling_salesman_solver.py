@@ -2,7 +2,7 @@ from locale import currency
 
 
 def can_go_to_city(city_weights, city, amount):
-    return amount + city_weights[city] > 0
+    return (amount + city_weights[city] > 0) and (amount + city_weights[city] < 30)
 
 
 def solve(matrix, city_weights):
@@ -21,6 +21,7 @@ def solve(matrix, city_weights):
         solution.append(min_city)
         city = min_city
         current_amount += city_weights[min_city]
+        print("current_amount", current_amount)
         total_distance += min_distance
     # Primer item es 0 y deberia ser 1, ultimo item es 149 y deberia ser 150.
     print("total_distance:", total_distance)
