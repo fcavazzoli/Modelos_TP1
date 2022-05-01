@@ -6,11 +6,11 @@ def can_go_to_city(city_weights, city, amount):
 
 
 def solve(matrix, city_weights):
-    print(city_weights)
-    solution = [0]
-    city = 0
+    INITIAL_CITY = 61  # es otra que empieza con 10 de carga
+    solution = [INITIAL_CITY]
+    city = INITIAL_CITY
     min_city = 0
-    current_amount = city_weights[0]
+    current_amount = city_weights[INITIAL_CITY]
     total_distance = 0
     while len(solution) < len(matrix):
         min_distance = float("inf")
