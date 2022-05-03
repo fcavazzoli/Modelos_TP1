@@ -23,6 +23,11 @@ Deterninar el orden en el que el camion debe recorrer los puntos de la ruta cump
 
 # Algoritmos
 ## Greedy
+
+La idea de este algoritmo es tomar el punto de inicio y a partir de ahi comenzar a recorrer. 
+Siempre se elige como proximo punto aquel mas cercano que cumpla con las condiciones de capacidad y que ademas no haya sido visitado.
+Es por definicion, un algoritmo greedy dado que sin importar el caso en el que se encuentre se aplica el mismo algoritmo para resolver el siguente punto a visitar.
+
 ```python
 def can_go_to_city(city_weights, city, amount):
     return (amount + city_weights[city] > 0) and (amount + city_weights[city] < 30)
@@ -49,6 +54,10 @@ def solve(matrix, city_weights, initial_city):
     return (total_distance, [str(x + 1) for x in solution])
 ```
 ## Fuerza Bruta - Greedy
+
+Este algoritmo es una mejora del algoritmo anterior, donde se elige una solucion inicial, se guarda el resultado y luego se elige otro punto de inicio y se vuelve a correr el algoritmo, si la solucion es mejor que la guardada se guarda y se repite el proceso hasta que no queden puntos iniciales por probar.
+Cabe aclarar que dadas las condiciones de capacidad el camion parte vacio y es por eso que la primera parada debe ser si o si un punto con carga positiva, entonces todos los negativos son filtrados en un primer paso para evitar ejecuciones inecesarias.
+
 ```python
 import algorithms.traveling_salesman_solver as tsm
 
