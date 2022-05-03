@@ -26,7 +26,7 @@ Deterninar el orden en el que el camion debe recorrer los puntos de la ruta cump
 
 La idea de este algoritmo es tomar el punto de inicio y a partir de ahi comenzar a recorrer. 
 Siempre se elige como proximo punto aquel mas cercano que cumpla con las condiciones de capacidad y que ademas no haya sido visitado.
-Es por definicion, un algoritmo greedy dado que sin importar el caso en el que se encuentre se aplica el mismo algoritmo para resolver el siguente punto a visitar.
+Es por definicion, un algoritmo greedy, dado que sin importar el caso en el que se encuentre se aplica el mismo algoritmo para resolver el siguente punto a visitar.
 
 ```python
 def can_go_to_city(city_weights, city, amount):
