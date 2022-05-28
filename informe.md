@@ -71,3 +71,49 @@ def solve(matrix, city_weights):
             best_sol = sol
     return best_sol[1]
 ```
+
+# Resolucion por programacion lineal
+
+## Definicion de variables
+ - $Y_{ij}$: recorre el trayecto entre los puntos i y j
+ - $U_i$: orden en el que llega al punto i
+ - $Z_{ij}$: visita a i antes que a j
+ - $C\_ACUM_j$: cantidad de carga acumulada en el punto j
+
+## Definicion de constantes
+ - $d_{ij}$: distancia entre los puntos i y j
+ - $C_i$: monto de dinero a cargar en el punto i 
+ - $CARGA\_MAXIMA$: capacidad maxima del camion
+ - $CARGA\_MINIMA$: capacidad minima del camion (por enunciado es 0 pero la defino como constante para poder modificarla de ser necesario)
+## Modelo Matematico
+
+Definicion de ecuaciones del problema del viajante:
+
+$$ \sum_{i=0}^{150} Y_{ij} = 1, i \neq j $$
+$$ \sum_{j=0}^{150} Y_{ij} = 1, j \neq i $$
+
+Elimino los Subtours:
+
+$$ U_{i} - U_{j} + 150 Y_{ij} \leq 149, \forall [i,j] \in [1...150], i \neq j$$
+
+Defino una variable para saber si visito a un punto antes que otro:
+
+$$ U_j \leq U_i + M Z_{ij} , \forall [i,j] \in [1...150] $$ 
+
+$$ U_i \leq U_j + M (1 - Z_{ji}) , \forall [i,j] \in [1...150] $$
+
+Uso la variable para definir la cantidad de carga acumulada en cada punto:
+
+$$ C\_ACUM_j = \sum_{i=0}^{150} C_{i} Z_{ij}  , \forall j \in [1...150] $$
+
+ > Aclaracion, son 150 definiciones de C_ACUM 
+
+Ahora que ya esta definida la cantidad de carga acumulada en cada punto, se puede especificar la restriccion de capacidad que pide el problema:
+
+$ C\_ACUM_j \geq CARGA\_MINIMA  $, $\forall j \in [1...150]$
+$ C\_ACUM_j \leq CARGA\_MAXIMA  $, $\forall j \in [1...150]$
+
+
+Funcional:
+
+$$ Z(min)= \sum_{j=0}^{150}\sum_{j=0}^{150} Y_{ij} d_{ij}  $$
