@@ -162,6 +162,12 @@ La solucion generada por el algoritmo realizado en python para la primera entreg
 1,98,87,76,73,48,63,30,84,7,8,89,96,35,93,52,33,92,54,46,90,56,26,75,18,85,65,55,58,50,70,86,29,81,25,20,51,43,67,32,23,38,77,14,80,15,78,59,16,79,88,94,10,3,62,22,4,45,71,44,64,72,49,31,27,41,57,39,60,66,17,11,61,36,69,24,12,53,40,42,9,28,6,37,2,19,99,47,83,97,100,5,95,82,34,21,68,91,13,74
 ```
 
+#### MTZ
+
+![MTZ-con-solucion](img/MTZ_with_sol.png)
+
+#### TSP
+![TSP-con-solucion](img/TSP_with_solucion.png)
 
 
 # Bibliografia
