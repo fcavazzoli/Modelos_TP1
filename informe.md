@@ -117,3 +117,54 @@ $ C\_ACUM_j \leq CARGA\_MAXIMA  $, $\forall j \in [1...150]$
 Funcional:
 
 $$ Z(min)= \sum_{j=0}^{150}\sum_{j=0}^{150} Y_{ij} d_{ij}  $$
+
+# Tercera Entrega:
+
+## Modelo MTZ
+
+La formulacion MTZ agrega una restriccion para funcionar 
+$$ U_j - U_i + (n - 1)* x_{ij} \leq n - 2; j \in [1...n]: j>1 $$
+]
+Donde al igual que el planteo de la entrega anterior: 
+ - $U_j$: es el orden en el recorrido que se le asigna a el punto $i$
+ - $x_{1j}$: Se viaja de el punto $i$ a al $j$
+
+ Se puede ver como la ciudad $U_j$ sera la inmediata posterior a la $U_i$
+ Para demostrarlo asumimos que el recorrido sera ejecutado entre puntos (siendo i antes que j) entonces $x_{ij} = 1$.
+ $$ U_j - U_i \leq (n-2) - (n-1) $$
+ $$ U_j - U_i \leq -2 + 1 $$
+ $$ U_j \leq - 1  - U_i $$ 
+ $$ U_j \geq U_i + 1 $$
+
+![MTZ](img/MTZ.png)
+
+## Modelo TSP
+
+Este modelo se trata de agregar restricciones en cada iteracion. De esta manera el modelo puede evitar entrar en subtours que ya se sabe que no funcionan o que son menos optimos.
+
+```mod
+  // Subtour elimination constraints.
+  forall ( s in subtours )
+    sum ( i in Cities : s.subtour[i] != 0 ) x[< minl ( i, s.subtour[i] ), maxl 
+      ( i, s.subtour[i] ) >] <= s.size - 1;
+
+}
+```
+
+![TSP_no_solutions](img/TSP_no_solution.png)
+
+
+### Ejecucion de los algoritmos con una solucion de base
+
+La solucion generada por el algoritmo realizado en python para la primera entrega es:
+
+```
+1,98,87,76,73,48,63,30,84,7,8,89,96,35,93,52,33,92,54,46,90,56,26,75,18,85,65,55,58,50,70,86,29,81,25,20,51,43,67,32,23,38,77,14,80,15,78,59,16,79,88,94,10,3,62,22,4,45,71,44,64,72,49,31,27,41,57,39,60,66,17,11,61,36,69,24,12,53,40,42,9,28,6,37,2,19,99,47,83,97,100,5,95,82,34,21,68,91,13,74
+```
+
+
+
+# Bibliografia
+
+[MTZ](https://www.researchgate.net/publication/308707033_A_note_on_the_Miller-Tucker-Zemlin_model_for_the_asymmetric_traveling_salesman_problem
+)
